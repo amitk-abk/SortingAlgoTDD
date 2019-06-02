@@ -2,11 +2,13 @@ package com.mycomp.ex.tdd;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class SortTest {
 
@@ -25,6 +27,17 @@ public class SortTest {
         assertSorted(intList(2, 1), intList(1, 2));
         assertSorted(intList(1, 3, 2), intList(1, 2, 3));
         assertSorted(intList(3, 2, 1), intList(1, 2, 3));
+
+        sortBigList(1000);
+    }
+
+    private void sortBigList(int n) {
+        List<Integer> unsorted = new ArrayList<>();
+        for (int i = 0; i < n; i++)
+            unsorted.add((int) (Math.random() * 1000.0));
+        List<Integer> sorted = sort(unsorted);
+        for (int i = 0; i < n - 1; i++)
+            assertTrue(sorted.get(i) <= sorted.get(i + 1));
     }
 
 
