@@ -27,6 +27,7 @@ public class SortTest {
         assertSorted(intList(2, 1), intList(1, 2));
         assertSorted(intList(1, 3, 2), intList(1, 2, 3));
         assertSorted(intList(3, 2, 1), intList(1, 2, 3));
+        assertSorted(intList(3, 2, 1, 4), intList(1, 2, 3, 4));
 
         sortBigList(1000);
     }
