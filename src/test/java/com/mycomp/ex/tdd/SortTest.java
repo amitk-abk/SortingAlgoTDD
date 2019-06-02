@@ -16,6 +16,10 @@ public class SortTest {
         assertThat(sort(unsorted), is(sorted));
     }
 
+    private List<Integer> intList(Integer... ints) {
+        return Arrays.asList(ints);
+    }
+
     @Test
     public void sortings() throws Exception {
         assertSorted(intList(), intList());
@@ -25,10 +29,14 @@ public class SortTest {
 
 
     private List<Integer> sort(List<Integer> list) {
+        if (list.size() > 1) {
+            if (list.get(0) > list.get(1)) {
+                int temp = list.get(0);
+                list.set(0, list.get(1));
+                list.set(1, temp);
+            }
+        }
         return list;
     }
 
-    private List<Integer> intList(Integer... ints) {
-        return Arrays.asList(ints);
-    }
 }
